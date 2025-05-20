@@ -50,8 +50,10 @@ Se utiliza la API del Banco Mundial para obtener datos económicos clave como la
 ## Cómo ejecutar el proyecto
 
 #### 1. Clona el repositorio
-`git clone https://github.com/dcontreras1/ETL_final_project`
-`cd ETL_final_project`
+````
+git clone https://github.com/dcontreras1/ETL_final_project
+cd ETL_final_project
+````
 
 #### 2. Instala las dependencias
 `pip install -r requirements.txt`
