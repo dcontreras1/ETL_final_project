@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+
 from Scripts.Extract import extract
+from Scripts.Extract_API import fetch_api_data
 from Scripts.Transform import transform
 from Scripts.merge_data_API import merge
 from Scripts.Load import load
@@ -31,6 +33,12 @@ dag = DAG(
 extract_task = PythonOperator(
     task_id='extract',
     python_callable=extract,
+    dag=dag
+)
+
+fetch_api_task = PythonOperator(
+    task_id='fetch_api_data',
+    python_callable=fetch_api_data,
     dag=dag
 )
 
@@ -64,5 +72,5 @@ validate_task = PythonOperator(
     dag=dag
 )
 
-# Nuevo orden de dependencias
-extract_task >> transform_task >> merge_task >> load_task >> stream_task >> validate_task
+# Dependencias: extract y fetch_api_data en paralelo
+[extract_task, fetch_api_task] >> transform_task >> merge_task >> load_task >> stream_task >> validate_task

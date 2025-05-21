@@ -15,7 +15,8 @@ consumer = KafkaConsumer(
 
 # Inicializar el DataFrame vacío una sola vez
 if 'data' not in st.session_state:
-    st.session_state.data = pd.DataFrame(columns=['country', 'value'])
+    st.session_state.data = pd.DataFrame(columns=['country', 'year', 'indicator', 'value'])
+
 
 # Título del dashboard
 st.title("Stream de Desempleo Global en Tiempo Real")
