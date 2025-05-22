@@ -4,11 +4,11 @@
 ## Componentes del Proyecto
 
 #### 1. Orquestación del pipeline
-Se utiliza Apache Airflow para orquestar todo el proceso ETL de forma automatizada.
+- Se utiliza Apache Airflow para orquestar todo el proceso ETL de forma automatizada.
 
-Cada fase (extracción, transformación, carga, validación y streaming) está representada como una tarea dentro del DAG ETL_economy_pipeline.
+- Cada fase (extracción, transformación, carga, validación y streaming) está representada como una tarea dentro del DAG ETL_economy_pipeline.
 
-Airflow garantiza la ejecución ordenada, repetible y monitoreable de todo el flujo.
+- Airflow garantiza la ejecución ordenada, repetible y monitoreable de todo el flujo.
 
 #### 2. Extracción de Datos
 Se utiliza la API del Banco Mundial para obtener datos económicos clave como la tasa de desempleo, para todos los países desde el año 2000 hasta 2023.
