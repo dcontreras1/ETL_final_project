@@ -8,7 +8,6 @@ from Scripts.Transform import transform
 from Scripts.merge_data_API import merge
 from Scripts.Load import load
 from Scripts.Producer_kafka import stream_unemployment
-from Scripts.validate_data import validate_data
 
 default_args = {
     'owner': 'airflow',
@@ -66,11 +65,5 @@ stream_task = PythonOperator(
     dag=dag
 )
 
-validate_task = PythonOperator(
-    task_id='validate',
-    python_callable=validate_data,
-    dag=dag
-)
-
-# Dependencias: extract y fetch_api_data en paralelo
-[extract_task, fetch_api_task] >> transform_task >> merge_task >> load_task >> stream_task >> validate_task
+# dependencias
+[extract_task, fetch_api_task] >> transform_task >> merge_task >> load_task >> stream_task
